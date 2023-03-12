@@ -1,6 +1,6 @@
 .PHONY = build
 build:
-	platformio run --target debug
+	platformio run
 
 .PHONY = upload
 upload:
