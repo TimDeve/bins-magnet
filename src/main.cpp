@@ -71,11 +71,11 @@ void printJson(String input)
   }
   InkPageSprite.clear();
   InkPageSprite.drawString(0, 0, "Bins collection dates");
-    
+
   for (JsonObject Results_Refuse_collection_date : doc["Results"]["Refuse_collection_dates"].as<JsonArray>())
   {
     const char *typeOfRefuse = Results_Refuse_collection_date["_"];
-    if (strstr(typeOfRefuse, "Dry Recycling")) {
+    if (strstr(typeOfRefuse, "Recycling")) {
       InkPageSprite.drawString(0, 30, "Recycling");
       const char *Results_Refuse_collection_date_Next_Collection = Results_Refuse_collection_date["Next_Collection"];
       Serial.println(Results_Refuse_collection_date_Next_Collection);
@@ -83,7 +83,7 @@ void printJson(String input)
       // const char *Results_Refuse_collection_date_Last_Collection = Results_Refuse_collection_date["Last_Collection"];
       // InkPageSprite.drawString(0, 70, Results_Refuse_collection_date_Last_Collection);
       // Serial.println(Results_Refuse_collection_date_Last_Collection);
-    } else if (strstr(typeOfRefuse, "Refuse Collection")){
+    } else if (strstr(typeOfRefuse, "General Waste")){
       InkPageSprite.drawString(0, 100, "Refuse");
       const char *Results_Refuse_collection_date_Next_Collection = Results_Refuse_collection_date["Next_Collection"];
       Serial.println(Results_Refuse_collection_date_Next_Collection);
@@ -91,7 +91,7 @@ void printJson(String input)
       // const char *Results_Refuse_collection_date_Last_Collection = Results_Refuse_collection_date["Last_Collection"];
       // InkPageSprite.drawString(0, 140, Results_Refuse_collection_date_Last_Collection);
     }
-    
+
   }
   M5.M5Ink.clear();
   InkPageSprite.pushSprite();
